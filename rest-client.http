@@ -1,0 +1,62 @@
+GET http://localhost:3001
+
+### send Fetch songs request
+GET http://localhost:3001/songs/?page=1&limit=2
+
+###signup user
+POST http://localhost:3001/auth/signup
+Content-Type: application/json
+
+{
+    "firstName": "Martin",
+    "lastName": "Garrix",
+    "email": "martingarrix@gmail.com",
+    "password": "123456"
+}
+### martingarrix@gmail.com , apikey:- 792da70d-f44b-410d-85e7-96beafe84027
+### API KEY JOH13 TEMP: f00ca35e-efeb-4b3a-b64b-0545696e7b0b
+
+### Login
+POST http://localhost:3001/auth/login
+Content-Type: application/json
+
+{
+    "email": "martingarrix@gmail.com",
+    "password": "123456"
+}
+
+### Get Song
+GET http://localhost:3001/songs/1 
+
+### Add Song
+POST http://localhost:3001/songs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmdhcnJpeEBnbWFpbC5jb20iLCJ1c2VySWQiOiI5IiwiaWF0IjoxNzM3NTQ1NzkyLCJleHAiOjE3Mzc2MzIxOTJ9.ydRuZUqINidF-E4JnOGENXTRze66rsPNnI-QNRHiApE
+{
+    "title": "Lasting lover",
+    "artists": [1],
+    "releasedDate": "2023-05-11",
+    "duration": "02:34",
+    "lyrics": "A brief summary of the song lyrics here"
+}
+
+### Profile
+GET http://localhost:3001/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmdhcnJpeEBnbWFpbC5jb20iLCJ1c2VySWQiOiI5IiwiaWF0IjoxNzM3NTQ1NzkyLCJleHAiOjE3Mzc2MzIxOTJ9.ydRuZUqINidF-E4JnOGENXTRze66rsPNnI-QNRHiApE
+### Enable 2FA
+GET http://localhost:3001/auth/enable-2fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmdhcnJpeEBnbWFpbC5jb20iLCJ1c2VySWQiOiI5IiwiaWF0IjoxNzM3NTQ1NzkyLCJleHAiOjE3Mzc2MzIxOTJ9.ydRuZUqINidF-E4JnOGENXTRze66rsPNnI-QNRHiApE
+### Validate 2FA Token
+POST http://localhost:3001/auth/validate-2fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmdhcnJpeEBnbWFpbC5jb20iLCJ1c2VySWQiOiI5IiwiaWF0IjoxNzM3NTQ1NzkyLCJleHAiOjE3Mzc2MzIxOTJ9.ydRuZUqINidF-E4JnOGENXTRze66rsPNnI-QNRHiApE
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmdhcnJpeEBnbWFpbC5jb20iLCJ1c2VySWQiOiI5IiwiaWF0IjoxNzM3NTQ1NzkyLCJleHAiOjE3Mzc2MzIxOTJ9.ydRuZUqINidF-E4JnOGENXTRze66rsPNnI-QNRHiApE"
+}
+
+### Disable 2FA
+GET http://localhost:3001/auth/disable-2fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmdhcnJpeEBnbWFpbC5jb20iLCJ1c2VySWQiOiI5IiwiaWF0IjoxNzM3NTQ1NzkyLCJleHAiOjE3Mzc2MzIxOTJ9.ydRuZUqINidF-E4JnOGENXTRze66rsPNnI-QNRHiApE
+### test env
+GET http://localhost:3001/auth/test
