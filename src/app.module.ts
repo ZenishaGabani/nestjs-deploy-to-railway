@@ -33,7 +33,20 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       }),
       inject: [ConfigService],
     }),
-    TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
+    //TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: '34.145.0.92',
+      port: 5432,
+      username: 'postgres',
+      password: 'your-ErnQpSRXkfjxDqjMdGarWKHlrZBXlqfA',
+      database: 'railway',
+      synchronize: true,
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      extra: {
+        connectionTimeoutMillis: 60000, // Set a suitable timeout value
+      },
+    }),    
     SongsModule,
     PlaylistModule,
     AuthModule,

@@ -14,6 +14,8 @@ import path from 'path';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configService = app.get(ConfigService); 
+  console.log('Database Host:', configService.get<string>('DATABASE_HOST'));
+  console.log('Database Port:', configService.get<number>('DATABASE_PORT'));
   console.log('Environment JWT Secret:', configService.get<string>('JWT_SECRET'));
   app.useGlobalPipes(new ValidationPipe());
 
