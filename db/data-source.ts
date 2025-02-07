@@ -12,11 +12,11 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
   useFactory: async (configService: ConfigService): Promise<TypeOrmModuleOptions> => {
     return {
       type: 'postgres',
-      host: configService.get<string>('DB_HOST'),
-      port: configService.get<number>('DB_PORT'),
+      host: configService.get<string>('DATABASE_HOST'),
+      port: configService.get<number>('DATABASE_PORT'),
       username: configService.get<string>('USERNAME'),
       password: configService.get<string>('PASSWORD'),
-      database: configService.get<string>('DB_NAME'),
+      database: configService.get<string>('DATABASE_NAME'),
       entities: [User, Playlist, Artist, Song],
       synchronize: false,
       migrations: ['dist/db/migrations/*.js'],
@@ -26,11 +26,11 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
 
 export const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
-  host: process.env.DB_HOST,
-  port: parseInt(process.env.DB_PORT, 10),
+  host: process.env.DATABASE_HOST,
+  port: parseInt(process.env.DATABASE_PORT, 10),
   username: process.env.USERNAME,
   password: process.env.PASSWORD,
-  database: process.env.DB_NAME,
+  database: process.env.DATABASE_NAME,
   entities: ['dist/**/*.entity.js'],
   synchronize: false,
   migrations: ['dist/db/migrations/*.js'],
