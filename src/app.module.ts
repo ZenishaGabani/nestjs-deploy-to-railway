@@ -36,15 +36,16 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     //TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: '34.145.0.92',
+      host: 'containers-us-west-89.railway.app',
       port: 5432,
       username: 'postgres',
       password: 'your-ErnQpSRXkfjxDqjMdGarWKHlrZBXlqfA',
       database: 'railway',
       synchronize: true,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      autoLoadEntities: true,
       extra: {
-        connectionTimeoutMillis: 60000, // Set a suitable timeout value
+        connectTimeoutMS: 600000, // Set a suitable timeout value
       },
     }),    
     SongsModule,
