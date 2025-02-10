@@ -36,13 +36,13 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     //TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'containers-us-west-89.railway.app',
-      port: 5432,
-      username: 'postgres',
-      password: 'your-ErnQpSRXkfjxDqjMdGarWKHlrZBXlqfA',
-      database: 'railway',
+      host: process.env.DB_HOST,
+      port: parseInt(process.env.DB_PORT, 10),
+      username: process.env.USERNAME,
+      password: process.env.PASSWORD,
+      database: process.env.DB_NAME,
       synchronize: true,
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      //entities: [__dirname + '/**/*.entity{.ts,.js}'],
       autoLoadEntities: true,
       extra: {
         connectTimeoutMS: 600000, // Set a suitable timeout value
