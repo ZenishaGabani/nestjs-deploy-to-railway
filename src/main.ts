@@ -3,13 +3,13 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 declare const module: any;
-// import * as dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { UsersService } from './users/users.service';
 import path from 'path';
 
 
-//dotenv.config();
+dotenv.config();
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
