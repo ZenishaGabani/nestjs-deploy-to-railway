@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -20,7 +20,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
   imports: [
     ConfigModule.forRoot({
       // envFilePath: ['.env.development', '.env.development.production'],
-      envFilePath: [`.env.development.${process.env.NODE_ENV}`, '.env.development'],
+      envFilePath: ['.env.development', '.env.development.production'],
       isGlobal: true,
       load: [configuration],
       validate,
@@ -45,7 +45,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       //entities: [__dirname + '/**/*.entity{.ts,.js}'],
       autoLoadEntities: true,
       extra: {
-        connectTimeoutMS: 600000, // Set a suitable timeout value
+        connectTimeoutMS: 600000,
       },
     }),    
     SongsModule,
@@ -65,9 +65,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     },
   ],
 })
-/* export class AppModule implements NestModule {
+export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(LoggerMiddleware).forRoutes('*');
   }
-} */
-export class AppModule {}
+}
