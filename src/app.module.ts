@@ -22,23 +22,16 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       isGlobal: true,
       envFilePath: ['.env.development', '.env.development.production'],
     }),
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: async (configService: ConfigService) => ({
-        type: 'postgres',
-        host: configService.get<string>('DB_HOST'),
-        port: parseInt(configService.get<string>('DB_PORT'), 10),
-        username: configService.get<string>('USERNAME'),
-        password: configService.get<string>('PASSWORD'),
-        database: configService.get<string>('DB_NAME'),
-        autoLoadEntities: true,
-        synchronize: true,
-        extra: {
-          connectTimeoutMS: 600000,
-        },
-      }),
-      inject: [ConfigService],
-    }),  
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: process.env.DB_HOST || process.env.POSTGRES_HOST,
+      port: parseInt(process.env.DB_PORT || process.env.POSTGRES_PORT, 10),
+      username: process.env.USERNAME || process.env.POSTGRES_USER,
+      password: process.env.PASSWORD || process.env.POSTGRES_PASSWORD,
+      database: process.env.DB_NAME || process.env.POSTGRES_DB,
+      synchronize: true, // Adjust as needed
+      logging: false, // Adjust as needed
+    }),      
     SongsModule,
     PlaylistModule,
     AuthModule,
