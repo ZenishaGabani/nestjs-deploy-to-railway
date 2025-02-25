@@ -29,8 +29,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       username: process.env.USERNAME || process.env.POSTGRES_USER,
       password: process.env.PASSWORD || process.env.POSTGRES_PASSWORD,
       database: process.env.DB_NAME || process.env.POSTGRES_DB,
-      synchronize: true, // Adjust as needed
-      logging: false, // Adjust as needed
+      entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+      synchronize: true,
+      logging: false,
     }),      
     SongsModule,
     PlaylistModule,
