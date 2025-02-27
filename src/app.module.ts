@@ -32,7 +32,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       entities: [__dirname + '/../**/*.entity{.ts,.js}'],
       synchronize: true,
       logging: false,
-    }),      
+    }),    
     SongsModule,
     PlaylistModule,
     AuthModule,
@@ -52,6 +52,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
+  console.log("NODE_ENV:", process.env.NODE_ENV);
     consumer.apply(LoggerMiddleware).forRoutes('*');
   }
 }
