@@ -9,11 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { UserModule } from './users/users.module';
 import { ArtistsModule } from './artists/artists.module';
 import { SeedModule } from './seed/seed.module';
-import { typeOrmAsyncConfig } from 'db/data-source';
-import configuration from './config/configuration';
 import { DevConfigModule } from './config/devConfig.module';
-import { validate } from 'env.validation';
-import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
