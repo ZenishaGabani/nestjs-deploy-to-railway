@@ -18,10 +18,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     TypeOrmModule.forFeature([User]),
     PassportModule,
     UserModule,
-    /* ConfigModule.forRoot({
-      envFilePath: ['.env'],
+     ConfigModule.forRoot({
+      envFilePath: ['.env.development, .env.production'],
       isGlobal: true,
-    }), */
+    }), 
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
